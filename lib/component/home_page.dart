@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:sizer/sizer.dart';
@@ -31,14 +34,19 @@ class _MyHomePageState extends State<MyHomePage> {
         /** For Sharing The Card */
         actions: <Widget>[
           IconButton(
-            onPressed: () {
-              _screenshotController
-                  .capture(
-                      delay: const Duration(milliseconds: 10), pixelRatio: 3.0)
-                  .then((value) => setState(() {
-                        Share.shareFiles([_image.path],
-                            text: "#Sharing Wishing App");
-                      }));
+            onPressed: () async {
+              final appDirectory = (await getExternalStorageDirectory())!.path;
+              File imgFile = File('$appDirectory/wish_card.png');
+              _screenshotController.capture().then((value) {
+                setState(() {
+                  this._image = value;
+                  imgFile
+                      .writeAsBytes(value!.buffer.asUint8List())
+                      .whenComplete(() => Share.shareFiles(
+                          ['$appDirectory/wish_card.png'],
+                          text: "#Sharing Wishing App"));
+                });
+              });
             },
             icon: const Icon(
               Icons.share,
@@ -67,14 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       shadowColor: Colors.grey,
                       elevation: 10.0,
                       child: Container(
-                        height: 300,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: _image != null
-                                ? Image.memory(_image).image
-                                : const AssetImage(""),
-                          ),
-                        ),
+                        height: 350,
+                        decoration: _image != null
+                            ? BoxDecoration(
+                                image: DecorationImage(
+                                    image: Image.memory(_image).image),
+                              )
+                            : const BoxDecoration(color: Colors.transparent),
                         child: TextField(
                           cursorHeight: 3.5.h,
                           cursorColor: Colors.grey,
