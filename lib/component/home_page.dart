@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
               File imgFile = File('$appDirectory/wish_card.png');
               _screenshotController.capture().then((value) {
                 setState(() {
-                  this._image = value;
+                  _image = value;
                   imgFile
                       .writeAsBytes(value!.buffer.asUint8List())
                       .whenComplete(() => Share.shareFiles(
