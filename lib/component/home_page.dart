@@ -1,0 +1,158 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:screenshot/screenshot.dart';
+
+import 'package:sizer/sizer.dart';
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.appTitle}) : super(key: key);
+
+  final String appTitle;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final ScreenshotController _screenshotController = ScreenshotController();
+  var _image;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.cyan,
+        title: Text(
+          widget.appTitle,
+          style: GoogleFonts.lato(
+            textStyle: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+
+        /** For Sharing The Card */
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              _screenshotController
+                  .capture(delay: const Duration(milliseconds: 10))
+                  .then((value) => setState(() {
+                        _image = value;
+                      }));
+            },
+            icon: const Icon(
+              Icons.share,
+              size: 30.0,
+            ),
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Container(
+          color: Colors.white,
+          height: double.infinity,
+          width: double.infinity,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: <Widget>[
+                  //** For Taking Screenshot Of Any Widget
+
+                  Screenshot(
+                    controller: _screenshotController,
+                    child: Card(
+                      color: const Color(0xFF656EE7),
+                      margin: const EdgeInsets.all(5.0),
+                      shadowColor: Colors.grey,
+                      elevation: 10.0,
+                      child: Container(
+                        height: 300,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: _image != null
+                                ? Image.memory(_image).image
+                                : const AssetImage(""),
+                          ),
+                        ),
+                        child: TextField(
+                          cursorHeight: 3.5.h,
+                          cursorColor: Colors.grey,
+                          style: TextStyle(
+                            fontSize: 20.0.sp,
+                          ),
+                          textAlign: TextAlign.center,
+                          keyboardType: TextInputType.text,
+                          textInputAction: TextInputAction.done,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Write Your Wishes Here...",
+                            hintStyle: GoogleFonts.aldrich(
+                              fontSize: 15.sp,
+                            ),
+                          ),
+                          toolbarOptions: const ToolbarOptions(
+                            copy: true,
+                            paste: true,
+                            selectAll: true,
+                            cut: true,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  //TODO: ADDING IMAGES IN NEW UPDATE
+
+                  // ** ADDING IMAGE BUTTON */
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: <Widget>[
+                        InkWell(
+                          onTap: () {
+                            // ignore: avoid_print
+                            print("Open Gallery To Add Image");
+                          },
+                          child: Container(
+                            child: const Icon(
+                              Icons.add_a_photo_sharp,
+                              color: Colors.black,
+                            ),
+                            height: 50.0,
+                            width: 200.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 5.0,
+                                  blurRadius: 15.0,
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   backgroundColor: const Color(0xFF00C497),
+      //   onPressed: () => Get.to(() => const ColorPickerDemo()),
+      //   label: const Text("Change Color"),
+      //   icon: const Icon(
+      //     Icons.navigate_next,
+      //     size: 35,
+      //   ),
+      // ),
+    );
+  }
+}
