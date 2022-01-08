@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:screenshot/screenshot.dart';
-
+import 'package:share_plus/share_plus.dart';
 import 'package:sizer/sizer.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -33,9 +33,11 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             onPressed: () {
               _screenshotController
-                  .capture(delay: const Duration(milliseconds: 10))
+                  .capture(
+                      delay: const Duration(milliseconds: 10), pixelRatio: 3.0)
                   .then((value) => setState(() {
                         _image = value;
+                        Share.share("#Sharing Wishcard App");
                       }));
             },
             icon: const Icon(
