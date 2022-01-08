@@ -36,8 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   .capture(
                       delay: const Duration(milliseconds: 10), pixelRatio: 3.0)
                   .then((value) => setState(() {
-                        _image = value;
-                        Share.share("#Sharing Wishcard App");
+                        Share.shareFiles([_image.path],
+                            text: "#Sharing Wishing App");
                       }));
             },
             icon: const Icon(
