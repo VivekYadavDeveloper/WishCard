@@ -40,8 +40,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Container(
                     color: Colors.white,
                     child: Image.asset(
-                      "assets/images/Wish.png",
-                      height: 50.h,
+                      "assets/images/SS.gif",
+                      height: 100.h,
                     ),
                   ),
                 ),
