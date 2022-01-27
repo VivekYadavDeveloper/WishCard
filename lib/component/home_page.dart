@@ -19,6 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final ScreenshotController _screenshotController = ScreenshotController();
 //* To Change The bgColor Of Card
   bool changebgColor = true;
+  var color = Colors.white;
   final List<Color> bgColors = <Color>[
     Colors.amber,
     Colors.amberAccent,
@@ -54,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         //*Next Time Implement
 
         /** For Sharing The Card */
-        // actions: <Widget>[
+        ///** actions: <Widget>[
         //   IconButton(
         //     onPressed: () async {
         //       final appDirectory = (await getExternalStorageDirectory())!.path;
@@ -85,14 +86,11 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
-                //**Using Screenshot Widgets Here
-                //**For Taking Screenshot Of Card Widget.
+                ///**For Taking Screenshot Of Card, We Are Using Here Screenshot.
                 Screenshot(
                   controller: _screenshotController,
                   child: Card(
-                    color: (changebgColor == true)
-                        ? Colors.white
-                        : const Color(0xFF656EE7),
+                    color: color,
                     //*To Change The Background Color On Press THe Buttons */
                     margin: const EdgeInsets.all(5.0),
                     shadowColor: Colors.grey,
@@ -131,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
 
-                //**Tap To Change The Color */
+                ///**Tap To Change The Color */
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text("Tap To Change The Color"),
@@ -154,6 +152,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             onTap: () {
                               setState(() {
                                 changebgColor = !changebgColor;
+                                color = bgColors[index];
+                                print(bgColors[index]);
                                 print("Changing The Color");
                               });
                             },
@@ -178,7 +178,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 //TODO: ADDING IMAGES IN NEW UPDATE
 
-                // ** Sharing IMAGE BUTTON */
+                /// ** Sharing IMAGE BUTTON */
+                ///** For Sharing The Image I Used "SHARE_PLUS" Plugin
+                ///*** Which Automatically Create Image In .PNG Format.
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -202,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             }
                           });
                           // ignore: avoid_print
-                          print("Open Gallery To Add Image");
+                          print("Sharing The Image ");
                         },
                         child: Container(
                           child: const Icon(
