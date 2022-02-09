@@ -37,20 +37,22 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Stack(
               children: <Widget>[
                 Center(
-                  child: Container(
-                    color: Colors.white,
-                    child: Image.asset(
-                      "assets/images/SS.gif",
-                      height: 100.h,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      color: Colors.white,
+                      child: Image.asset(
+                        "assets/images/SS.gif",
+                      ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 25.h),
+                  padding: const EdgeInsets.only(bottom: 250.0),
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: Text(
-                      "Wish Your Friends With This Card😊",
+                      "Wish Your Friends 😉",
                       style: GoogleFonts.mcLaren(
                         fontSize: 15.0.sp,
                         color: const Color(0xFF656EE7),

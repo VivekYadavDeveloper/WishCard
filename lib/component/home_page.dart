@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:sizer/sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.appTitle}) : super(key: key);
@@ -16,19 +17,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  _sendmail(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw ("Not Open");
+    }
+  }
+
   final ScreenshotController _screenshotController = ScreenshotController();
-//* To Change The bgColor Of Card
+
+  ///** To Change The bgColor Of Card
   bool changebgColor = true;
   var color = Colors.white;
   final List<Color> bgColors = <Color>[
-    Colors.amber,
+    const Color(0xFF24A19C),
     Colors.amberAccent,
-    Colors.blue,
+    const Color(0xFF1572A1),
     Colors.blueAccent,
-    Colors.blueGrey,
-    Colors.cyan,
+    const Color(0xFFA6E3E9),
+    const Color(0xFFF67280),
     Colors.cyanAccent,
-    Colors.deepOrange,
+    const Color(0xFFD9D7F1),
     Colors.deepOrangeAccent,
     Colors.deepPurple,
     Colors.deepPurpleAccent,
@@ -36,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Colors.limeAccent,
     Colors.lightBlueAccent,
     Colors.lime,
-    Colors.teal,
+    const Color(0xFF28FFBF),
     Colors.tealAccent,
     Colors.redAccent
   ];
@@ -45,17 +55,29 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.cyan,
-        title: Text(
-          widget.appTitle,
-          style: GoogleFonts.lato(
-            textStyle: const TextStyle(fontWeight: FontWeight.bold),
+        title: Center(
+          child: Text(
+            widget.appTitle,
+            style: GoogleFonts.lato(
+              textStyle:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () => _sendmail(
+                "mailto:vk662967@gmail.org?subject=feedback&body=New%20plugin"),
+            icon: const Icon(Icons.mail_outline_rounded),
+            color: Colors.redAccent,
+          ),
+        ],
         //*Next Time Implement
 
         /** For Sharing The Card */
-        ///** actions: <Widget>[
+        //** actions: <Widget>[
         //   IconButton(
         //     onPressed: () async {
         //       final appDirectory = (await getExternalStorageDirectory())!.path;
@@ -101,10 +123,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Center(
                           child: TextField(
                             cursorHeight: 3.5.h,
-                            cursorColor: Colors.grey,
+                            cursorColor: const Color(0xFF33425B),
                             style: TextStyle(
-                              fontSize: 20.0.sp,
-                            ),
+                                fontSize: 20.0.sp, fontStyle: FontStyle.italic),
                             textAlign: TextAlign.center,
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.done,
@@ -129,10 +150,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
 
-                ///**Tap To Change The Color */
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text("Tap To Change The Color"),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                Text(
+                  "TAP TO CHANGE THE COLOR",
+                  style: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueGrey,
+                          fontStyle: FontStyle.italic)),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -140,8 +168,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     margin: const EdgeInsets.symmetric(
                       vertical: 20.0,
                     ),
-                    height: 75.0,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.shade400,
+                            offset: const Offset(0, 8.0),
+                            blurRadius: 5.0)
+                      ],
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    height: 12.5.h,
                     child: ListView.builder(
+                      itemExtent: 50,
                       scrollDirection: Axis.horizontal,
                       itemCount: bgColors.length,
                       itemBuilder: (context, index) {
@@ -154,11 +193,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 changebgColor = !changebgColor;
                                 color = bgColors[index];
                                 print(bgColors[index]);
-                                print("Changing The Color");
+                                print("Color Is Change");
                               });
                             },
+
                             child: Container(
-                              width: 50.0,
+                              width: 20.0.w,
                               decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
@@ -180,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 /// ** Sharing IMAGE BUTTON */
                 ///** For Sharing The Image I Used "SHARE_PLUS" Plugin
-                ///*** Which Automatically Create Image In .PNG Format.
+                ///** Which Automatically Create Image In .PNG Format.
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -211,10 +251,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             Icons.send_sharp,
                             color: Colors.black,
                           ),
-                          height: 50.0,
-                          width: 150.0,
+                          height: 7.0.h,
+                          width: 45.0.w,
                           decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: <BoxShadow>[
