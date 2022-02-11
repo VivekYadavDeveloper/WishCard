@@ -20,11 +20,9 @@ class MyApp extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, deviceType) {
         return GetMaterialApp(
-
           title: 'WISHES CARD',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-
             primarySwatch: Colors.blue,
           ),
           home: const SplashScreen(),
@@ -32,7 +30,6 @@ class MyApp extends StatelessWidget {
             "Splash Screen": (BuildContext context) => const SplashScreen(),
             "MyHomePage": (BuildContext context) =>
                 const MyHomePage(appTitle: "WISHES")
-
           },
         );
       },
