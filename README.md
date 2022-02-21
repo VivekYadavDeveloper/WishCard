@@ -5,7 +5,7 @@
 ![Screenshot_1645283503](https://user-images.githubusercontent.com/53872301/154980222-fb4e1574-cf7c-45b7-8177-769824ed2058.png)
 ![Screenshot_1645283463](https://user-images.githubusercontent.com/53872301/154980198-f64eeb3a-9475-4567-acea-1d27ba74100b.png)
 ![Screenshot_1645283491](https://user-images.githubusercontent.com/53872301/154980209-73c2ff9a-ae83-421c-b9ed-57e6831d8573.png)
-</div>
+<div>
 
 
 A new Flutter project.
