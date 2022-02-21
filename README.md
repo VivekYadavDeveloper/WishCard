@@ -1,6 +1,6 @@
 # wish_card!
 
-("https://user-images.githubusercontent.com/53872301/154980225-b791ed98-f7b9-4111-b340-d2370bee5ba5.png)
+![Screenshot_1645283560]("https://user-images.githubusercontent.com/53872301/154980225-b791ed98-f7b9-4111-b340-d2370bee5ba5.png)
 
 ![Screenshot_1645283498](https://user-images.githubusercontent.com/53872301/154980218-2f4380bb-7a46-4a7e-812a-8586b2b2b42b.png)
 
