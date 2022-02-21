@@ -10,6 +10,13 @@
 
 ![Screenshot_1645283503](https://user-images.githubusercontent.com/53872301/154982168-378610e4-593e-4453-b56e-e21b7d0ed3c0.png)
 
+PLUGINS THAT I USE IS:
+get: ^4.6.1 (Navigaton)
+  
+google_fonts: ^2.3.1
+screenshot: ^1.2.3
+share_plus: ^3.0.4
+sizer: ^2.0.15
 
 A new Flutter project.
 
