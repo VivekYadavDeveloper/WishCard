@@ -2,17 +2,16 @@
 <div class="grid-column">
   
 <img src="https://user-images.githubusercontent.com/53872301/154982151-bce8b1b4-50fd-4a5c-8128-e83a7f42f43d.png" width="300"/>
-  <br>
 
 <img src="https://user-images.githubusercontent.com/53872301/154982160-4d1163c8-2307-4c30-9099-db87c187cdf2.png" width="300"/>
   
-<br>
+
 <img src="https://user-images.githubusercontent.com/53872301/154982163-b4d5582b-6cb5-4aa9-819b-8a46330efd37.png" width="300"/>
   
-<br>
+
 <img src="https://user-images.githubusercontent.com/53872301/154982165-e4ea7fa9-b607-4b95-a80e-ec555af060fe.png" width="300"/>
   
-<br>
+
 <img src="https://user-images.githubusercontent.com/53872301/154982168-378610e4-593e-4453-b56e-e21b7d0ed3c0.png" width="300"/>
   
   </div>
