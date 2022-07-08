@@ -11,11 +11,15 @@
 <img src="https://user-images.githubusercontent.com/53872301/154982168-378610e4-593e-4453-b56e-e21b7d0ed3c0.png" width="300"/>
 
 PLUGINS THAT I USE IS:
+<br>
 get: ^4.6.1 (Navigaton)
-  
+  <br>
 google_fonts: ^2.3.1
+<br>
 screenshot: ^1.2.3
+<br>
 share_plus: ^3.0.4
+<br>
 sizer: ^2.0.15
 
 A new Flutter project.
