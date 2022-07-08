@@ -1,4 +1,4 @@
-# wish_card!
+# Wish Card!
 <div class="grid-column">
   
 <img src="https://user-images.githubusercontent.com/53872301/154982151-bce8b1b4-50fd-4a5c-8128-e83a7f42f43d.png" width="300"/>
